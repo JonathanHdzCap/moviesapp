@@ -17,7 +17,9 @@ export default function ContenidoDinamico(props: any) {
         )
     } else if (props.calificacion >= 80 && props.calificacion <= 90) {
         return (<h3> {props.nombre} Muy bien hecho</h3>)
-    } else {
+    } else if(props.calificacion >= 0 && props.calificacion < 80){
         return (<h3> {props.nombre} lol...</h3>)
+    }else{
+        throw `HA HABIDO UN ERROR CON LA CALIFICACION DE ${props.nombre}` 
     }
 }
