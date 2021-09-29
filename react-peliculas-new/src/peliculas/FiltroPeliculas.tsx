@@ -1,5 +1,6 @@
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { generoCreacionDTO, generoDTO } from "../generos/generos.model";
+import Button from "../utilis/Button";
 
 export default function FiltroPeliculas() {
     const valorInicial: filtroPeliculasForm = {
@@ -23,13 +24,13 @@ export default function FiltroPeliculas() {
                     <Form>
                         <div className="row g-3">
                             <div className="col">
-                                <label htmlFor="titulo" className="form-label">Titulo</label>
+                                {/* <label htmlFor="titulo" className="form-label">Titulo</label> */}
                                 <input type="text" className="form-control" id="titulo" placeholder="Título de la pelicula"
                                     {...formikProps.getFieldProps('titulo')}
                                 />
                             </div>
                             <div className="col">
-                                <label htmlFor="genero" className="form-label">Genero</label>
+                                {/* <label htmlFor="genero" className="form-label">Genero</label> */}
                                 <select className="form-control"
                                     {...formikProps.getFieldProps('generoId')}
                                 >
@@ -39,6 +40,31 @@ export default function FiltroPeliculas() {
                                     )}
                                 </select>
                             </div>
+
+                            <div className="col">
+                                <Field className="form-check-input" id="proximosEstrenos" name="proximosEstrenos" type="checkbox" />
+                                <label className="form-check-label" htmlFor="proximosEstrenos">Próximos Estrenos</label>
+                            </div>
+
+                            <div className="col">
+                                <Field className="form-check-input" id="enCines" name="enCines" type="checkbox" />
+                                <label className="form-check-label" htmlFor="enCines">En Cines</label>
+                            </div>
+
+                            <Button
+                                className="btn btn-primary mb-2 mx-sm-3 col"
+                                disabled={formikProps.isSubmitting}
+                                onClick={() => formikProps.submitForm()}
+                            >
+                                Filtar
+                            </Button>
+
+                            <Button
+                                className="btn btn-danger mb-2 col"
+                                onClick={() => formikProps.setValues(valorInicial)}
+                            >Limpiar
+                            </Button>
+
                         </div>
                     </Form>
                 )}
